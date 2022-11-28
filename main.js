@@ -4,6 +4,13 @@ let galleryImage = ''
 for (i = 1; i <= 14; i++) {
   const div = document.createElement('div')
   div.classList.add("card", `card-${sizeArr[Math.floor(Math.random() * 3)]}`)
+  div.innerHTML = `<img src="./src/${i}.jpg" />`
+  container.append(div)
+}
+
+for (i = 1; i <= 14; i++) {
+  const div = document.createElement('div')
+  div.classList.add("card", `card-${sizeArr[Math.floor(Math.random() * 3)]}`)
   div.innerHTML = `<img data-src="./src/${i}.jpg" />`
   container.append(div)
 }
@@ -29,4 +36,17 @@ const imgObserver = new IntersectionObserver((entries, imgObserver) => {
 
 images.forEach(image => {
   imgObserver.observe(image)
+})
+document.querySelectorAll('img').forEach(image => {
+  image.addEventListener('click', () => {
+    document.getElementById('popup-image').style.display = 'block'
+    document.querySelector('.popup-image img').src = image.getAttribute('src')
+  })
+})
+document.querySelector('.popup-image span').addEventListener('click', () => {
+  document.getElementById('popup-image').style.display = 'none'
+})
+window.addEventListener('keydown', (e) => {
+  if (e.keyCode !== 27) return
+  document.getElementById('popup-image').style.display = 'none'
 })
