@@ -27,6 +27,8 @@
 .card {
   padding: 0;
   margin: 15px 10px;
+  overflow: hidden;
+  transition: all 2s ease-in;
 }
 .card img {
   object-fit: cover;
@@ -34,6 +36,9 @@
   height: 100%;
   border-radius: 16px;
   cursor: pointer;
+}
+.card img:hover {
+  transform: scale(1.1);
 }
 .card-small {
   grid-row-end: span 26;
