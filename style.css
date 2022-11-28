@@ -22,6 +22,11 @@
   grid-auto-rows: var(--row_increment);
   justify-content: center;
 }
+[data-src] {
+  min-width: 230px;
+  min-height: 200px;
+  background-color: #ddd;
+}
 .card {
   padding: 0;
   margin: 15px 10px;
