@@ -111,4 +111,7 @@
   bottom: 50px;
   z-index: 9;
   cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: .4s all ease-in;
 }

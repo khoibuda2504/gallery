@@ -65,5 +65,6 @@ scrollTopEle.addEventListener('click', () => {
 })
 
 window.addEventListener("scroll", () => {
-  scrollTopEle.style.display = window?.scrollY > 30 ? 'flex' : 'none'
+  scrollTopEle.style.visibility = window?.scrollY > 30 ? 'visible' : 'hidden'
+  scrollTopEle.style.opacity = window?.scrollY > 30 ? '1' : '0'
 }, false)
