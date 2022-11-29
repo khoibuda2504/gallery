@@ -41,7 +41,7 @@ images.forEach(image => {
 
 document.querySelectorAll('img').forEach(image => {
   image.addEventListener('click', () => {
-    if(image.getAttribute('data-click') === 'none') return
+    if (image.getAttribute('data-click') === 'none') return
     document.getElementById('popup-image').style.display = 'block'
     document.querySelector('.popup-image img').src = image.getAttribute('src')
   })
@@ -68,3 +68,25 @@ window.addEventListener("scroll", () => {
   scrollTopEle.style.visibility = window?.scrollY > 30 ? 'visible' : 'hidden'
   scrollTopEle.style.opacity = window?.scrollY > 30 ? '1' : '0'
 }, false)
+
+const audio = document.getElementById("audio")
+const mp3List = [
+  '1.mp3',
+  '2.mp3',
+  '3.mp3',
+  '4.mp3',
+]
+function playSound() {
+  const treck = mp3List[Math.floor(Math.random() * 4)]
+  var ourAudio = document.createElement('audio')
+  ourAudio.style.display = "none"
+  ourAudio.src = `./src/${treck}`
+  ourAudio.autoplay = true
+  ourAudio.controls = true
+  ourAudio.onended = function() {
+    this.remove()
+    playSound()
+  };
+  document.body.appendChild(ourAudio);
+}
+playSound()
