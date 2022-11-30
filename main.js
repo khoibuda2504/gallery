@@ -1,4 +1,5 @@
 const container = document.getElementById('container')
+const popUpEle = document.getElementById('popup-image')
 const sizeArr = ['small', 'medium', 'large']
 let galleryImage = ''
 for (i = 1; i <= 14; i++) {
@@ -42,16 +43,16 @@ images.forEach(image => {
 document.querySelectorAll('img').forEach(image => {
   image.addEventListener('click', () => {
     if (image.getAttribute('data-click') === 'none') return
-    document.getElementById('popup-image').style.display = 'block'
+    popUpEle.style.display = 'block'
     document.querySelector('.popup-image img').src = image.getAttribute('src')
   })
 })
-document.querySelector('.popup-image span').addEventListener('click', () => {
-  document.getElementById('popup-image').style.display = 'none'
-})
+// document.querySelector('.popup-image span').addEventListener('click', () => {
+//   popUpEle.style.display = 'none'
+// })
 window.addEventListener('keydown', (e) => {
   if (e.keyCode !== 27) return
-  document.getElementById('popup-image').style.display = 'none'
+  popUpEle.style.display = 'none'
 })
 
 
@@ -88,4 +89,8 @@ document.querySelectorAll('img').forEach(image => {
     if (audio && audio.duration > 0 && !audio.paused) return
     playSong()
   })
+})
+popUpEle.addEventListener('click', (e) => {
+  if (e.target.tagName === 'IMG') return
+  popUpEle.style.display = 'none'
 })
