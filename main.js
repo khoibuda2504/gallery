@@ -69,24 +69,23 @@ window.addEventListener("scroll", () => {
   scrollTopEle.style.opacity = window?.scrollY > 30 ? '1' : '0'
 }, false)
 
-const audio = document.getElementById("audio")
+let audio
 const mp3List = [
   '1.mp3',
   '2.mp3',
   '3.mp3',
   '4.mp3',
 ]
-function playSound() {
+
+const playSong = () => {
   const treck = mp3List[Math.floor(Math.random() * 4)]
-  var ourAudio = document.createElement('audio')
-  ourAudio.style.display = "none"
-  ourAudio.src = `./src/${treck}`
-  ourAudio.autoplay = true
-  ourAudio.controls = true
-  ourAudio.onended = function() {
-    this.remove()
-    playSound()
-  };
-  document.body.appendChild(ourAudio);
+  audio = new Audio(`./src/${treck}`)
+  audio.play()
 }
-playSound()
+
+document.querySelectorAll('img').forEach(image => {
+  image.addEventListener('click', () => {
+    if (audio && audio.duration > 0 && !audio.paused) return
+    playSong()
+  })
+})
